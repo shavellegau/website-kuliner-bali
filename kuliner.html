@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Kuliner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="script.js"></script>
+
+    <style>
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        #navBar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 7%;
+        background-color: var(--primary);
+        border-bottom: 1px solid var(--primary);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+      }
+      #navBar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--two);
+        font-style: italic;
+      }
+      #navBar .navbar-logo span {
+        color: var(--text);
+      }
+      #navBar .navbar-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+      }
+      #navBar .navbar-nav a {
+        color: var(--two);
+        display: inline-block;
+        font-size: 1.2rem;
+        margin: 0 1rem;
+        text-decoration: none;
+      }
+      #navBar .navbar-nav a:hover {
+        color: var(--text);
+      }
+      #navBar .navbar-nav a::after {
+        content: "";
+        display: block;
+        padding-bottom: 0.5rem;
+        transform: scaleX(0);
+        transition: 0.2s linear;
+      }
+      #navBar .navbar-nav a:hover::after {
+        transform: scaleX(0.5);
+      }
+      #navBar .navbar-extra a {
+        color: var(--two);
+        margin: 0 0.5rem;
+      }
+      #navBar .navbar-extra a:hover {
+        color: var(--text);
+      }
+      #hamburger-menu {
+        display: none;
+        cursor: pointer;
+      }
+      @keyframes slideInFromBottom {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .about.appear-animation {
+        animation: slideInFromBottom 1s ease forwards;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+       /*footer */
+       footer {
+            padding: 10px;
+            background-color: var(--primary);
+            text-align: center;
+            margin-top: auto; 
+            width: 100%; 
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social a {
+            color: white;
+            margin: 0 5px;
+        }
+
+        .social a:hover {
+            color: var(--text);
+        }
+
+        footer .social {
+            padding: 1rem 0;
+        }
+
+        footer .social a{
+            color: white;
+            margin: 1rem;
+        }
+
+        footer .link{
+            margin-bottom: 1.3rem;
+        }
+
+        footer .link a{
+            color: white;
+            padding: 0.7rem 1rem;
+        }
+
+        footer .credit {
+            font-size: 0.8rem;
+        }
+
+        footer .credit a{
+            color: var(--bg);
+            font-weight: bold;
+        }
+
+        footer .social a:hover, footer .link a:hover {
+            color: var(--text);
+        }
+
+
+        :root {
+            --primary: #006c84;
+            --secondary: #ffccbb;
+            --bg: #c4dfe6;
+            --text: #66a5ad;
+            --two: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .sectionContainer {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 6rem 1rem;
+        }
+
+        .sectionHeader {
+            margin-top: 1rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 3rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .sectionDescription {
+            color: var(--primary);
+            line-height: 1.75rem;
+            text-align: center;
+        }
+
+        .btn {
+            padding: .75rem 1.5rem;
+            outline: none;
+            border: none;
+            white-space: nowrap;
+            font-size: 1rem;
+            color: var(--two);
+            background-color: var(--primary);
+            border-radius: 50px;
+            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: box-shadow, transform;
+            transition-property: box-shadow, transform;
+        }
+
+        .btn:hover,
+        .btn:focus,
+        .btn:active {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        img {
+            display: flex;
+            width: 100%;
+        }
+
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .headerContainer {
+            width: 100%;
+            height: 100vh; /* Menyesuaikan tinggi layar */
+            display: grid;
+            gap: 2rem;
+            overflow: hidden;
+            grid-template-columns: 1fr 1fr; /* Dua kolom seimbang */
+            align-items: center;
+            justify-items: center;
+            padding: 2rem;
+        }
+
+        .headerImg img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: cover; /* Menjaga proporsi gambar */
+        }
+
+        .headerContent {
+            max-width: 100%;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        .headerContent h1 {
+            font-size: 4rem; /* Ukuran font lebih besar */
+            font-weight: 700;
+            line-height: 4.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .headerContent h1 span {
+            color: var(--text);
+        }
+
+        .headerContent .sectionDescription {
+            font-size: 16px; /* Ukuran font lebih besar */
+            line-height: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .headerBtn {
+            text-align: center;
+        }
+
+        .headerBtn .btn {
+            font-size: 1.5rem; /* Ukuran font lebih besar */
+            padding: 1rem 2rem; /* Padding lebih besar */
+        }
+
+        .headerContainer {
+            grid-template-columns: 2fr 3fr;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .headerContent h1,
+        .headerContent .sectionDescription,
+        .headerBtn {
+            text-align: left;
+        }
+
+        .headerImg {
+            grid-area: 1/2/2/3;
+        }
+
+        .buttonContainer {
+            display: grid;
+            gap: 1rem;
+            grid-auto-rows: 250px;
+        }
+
+        .buttonCard {
+            padding: 1rem;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 1rem;
+            cursor: pointer;
+            
+            animation-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: box-shadow, transform;
+            transition-property: box-shadow, transform;
+        }
+
+        .buttonCard:hover,
+        .buttonCard:focus,
+        .buttonCard:active {
+            box-shadow:box-shadow, 0 0 10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.5);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .buttonCard:nth-child(1) {
+            background-image: url(afood2.jpg);
+        }
+
+        .buttonCard:nth-child(2) {
+            background-image: url(afood.jpg);
+        }
+
+        .buttonCard:nth-child(3) {
+            background-image: url(adrink.jpg);
+        }
+
+        .buttonCard h4 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--two);
+        }
+
+        .mainCourseContainer,
+        .lightBitesContainer,
+        .refresmentsContainer {
+            color: white;
+            padding: 5rem 1rem;
+        }
+
+        .mainCourseContent .sectionDescription,
+        .lightBitesContent .sectionDescription,
+        .refresmentsContent .sectionDescription {
+            margin-bottom: 2rem;
+        }
+
+        .mainCourseGrid,
+        .lightBitesGrid,
+        .refresmentsGrid {
+            margin-top: 4rem;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .mainCourseCard,
+        .lightBitesCard,
+        .refresmentsCard {
+            position: relative;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 1.5);
+            overflow: hidden;
+        }
+
+        .mainCourseCard::before,
+        .lightBitesCard::before,
+        .refresmentsCard::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Black overlay with 50% opacity */
+            z-index: 1; 
+        }
+
+        .textContainer {
+            top: 10;
+            min-height: 90px; /* Adjust as needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mainCourseCard .btn,
+        .lightBitesCard .btn,
+        .refresmentsCard .btn {
+            top: 20px;
+        }
+
+        /* for main course */
+        .mainCourseCard:nth-child(1) {
+            background-image: url(kaukau1.jpg);
+        }
+        .mainCourseCard:nth-child(2) {
+            background-image: url(padi1.jpg);
+        }
+        .mainCourseCard:nth-child(3) {
+            background-image: url(ely1.jpg);
+        }
+        .mainCourseCard:nth-child(4) {
+            background-image: url(cretya1.jpg);
+        }
+        .mainCourseCard:nth-child(5) {
+            background-image: url(ankhusa1.jpg);
+        }.mainCourseCard:nth-child(6) {
+            background-image: url(wayang1.jpg);
+        }
+        .mainCourseCard:nth-child(7) {
+            background-image: url(kemangi1.jpg);
+        }
+        .mainCourseCard:nth-child(8) {
+            background-image: url(gabah1.jpg);
+        }
+
+        /* for light bites */
+        .lightBitesCard:nth-child(1) {
+            background-image: url(jajahgodoh.jpg);
+        }
+        .lightBitesCard:nth-child(2) {
+            background-image: url(satelilit.jpeg);
+        }
+        .lightBitesCard:nth-child(3) {
+            background-image: url(bubursumsum.jpg);
+        }
+        .lightBitesCard:nth-child(4) {
+            background-image: url(piesusu.jpg);
+        }
+
+        /* for refreshments */
+        .refresmentsCard:nth-child(1) {
+            background-image: url(eskuwud.jpg);
+        }
+        .refresmentsCard:nth-child(2) {
+            background-image: url(bowls.jpg);
+        }
+        .refresmentsCard:nth-child(3) {
+            background-image: url(coconut.jpg);
+        }
+        .refresmentsCard:nth-child(4) {
+            background-image: url(cocktail.jpg);
+        }
+
+        .mainCourseCard > *,
+        .lightBitesCard > *,
+        .refresmentsCard > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mainCourseCard h4,
+        .lightBitesCard h4,
+        .refresmentsCard h4 {
+            position: relative;
+            margin-bottom: 5px;
+            font-size: 1.7rem;
+            font-weight: 600;
+        }
+
+        .mainCourseCard h4::after,
+        .lightBitesCard h4::after,
+        .refresmentsCard h4::after {
+            position: absolute;
+            content: "";
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2rem;
+            height: 2px;
+            background-color: blueviolet;
+            opacity: 0.5;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin:  auto; 
+            margin-top: 120px ;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 1200px;
+            height: 100%;
+            max-height: 700px;
+            overflow-y: auto;
+            text-align: center;
+            border-radius: 10px;
+            position: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-text{
+            margin-top: 2rem;
+            color: var(--primary);
+            z-index: 2;
+            gap: 15px;
+        }
+
+        .modal-text h2{
+            font-weight: bolder;
+        }
+
+        .modal-content img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .slide-container{
+            padding: 0.5rem;
+        }
+
+        .slider-wrapper{
+            position: relative;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .slider{
+            display: flex;
+            aspect-ratio: 16 / 9;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+            border-radius: 0.5rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slider::-webkit-scrollbar{
+            display: none;
+        }
+
+        .slider img{
+            flex: 1 0 100%;
+            scroll-snap-align: start;
+            object-fit: cover;
+        }
+
+        .slider-nav{
+            display: flex;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .slider-nav a{
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #ffffff;
+            opacity: 0.75;
+            transition: opacity ease 250ms;
+        }
+
+        .slider-nav a:hover{
+            opacity: 1;
+        }
+
+        .slider-wrapper{
+            position: relative;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .content-container{
+            padding: 0.5rem;
+        }
+
+        .content-wrapper{
+            position: relative;
+            text-align: left;
+            max-width: 48rem;
+            max-height: 70rem;
+            margin: 0 auto;
+            background-color: #006c84;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 758px) {
+            .buttonContainer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .buttonCard:nth-child(2) {
+                grid-area: 1/1/2/3;
+            }
+
+            .mainCourseGrid,
+            .lightBitesGrid,
+            .refresmentsGrid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-content,
+            .modalMain2-content,
+            .modalMain3-content,
+            .modalMain4-content,
+            .modalMain5-content,
+            .modalMain6-content,
+            .modalMain7-content,
+            .modalMain8-content,
+            .modalLight1-content,
+            .modalLight2-content,
+            .modalLight3-content,
+            .modalLight4-content,
+            .modalRef1-content,
+            .modalRef2-content,
+            .modalRef3-content,
+            .modalRef4-content {
+                width: 90%;
+                height: 900px;
+                max-height: 900px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content,
+            .modalMain2-content,
+            .modalMain3-content,
+            .modalMain4-content,
+            .modalMain5-content,
+            .modalMain6-content,
+            .modalMain7-content,
+            .modalMain8-content,
+            .modalLight1-content,
+            .modalLight2-content,
+            .modalLight3-content,
+            .modalLight4-content,
+            .modalRef1-content,
+            .modalRef2-content,
+            .modalRef3-content,
+            .modalRef4-content {
+                width: 95%;
+                height: 1200px;
+                max-height: 700px;
+                padding: 5px;
+            }
+        }
+
+
+              /* Responsive styles */
+      @media (max-width: 991px) {
+        .hero .content h1 {
+          font-size: 2rem;
+        }
+        .hero .content p {
+          font-size: 1rem;
+        }
+        .about .row {
+          flex-direction: column;
+        }
+        #hamburger-menu {
+          display: inline-block;
+        }
+        #navBar .navbar-nav {
+          position: absolute;
+          top: 100%;
+          right: -100%;
+          padding-left: 10px;
+          background-color: var(--primary);
+          width: 50%;
+          height: 100vh;
+          transition: 0.3s;
+          flex-direction: column;
+          align-items: left;
+          justify-content: center;
+        }
+        #navBar .navbar-nav.active {
+          right: 0;
+        }
+        #navBar .navbar-nav a {
+          color: var(--two);
+          display: block;
+          margin: 1.5rem;
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
+        #navBar .navbar-nav a::after {
+          transform-origin: 0 0;
+        }
+        #navBar .navbar-nav a:hover::after {
+          transform: scaleX(0.2);
+        }
+      }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav id="navBar">
+            <a href="#" class="navbar-logo">Kuliner<span>Bali</span>.</a>
+
+            <div class="navbar-nav">
+                <a href="index.html">Home</a>
+                <a href="kuliner.html">Culinary</a>
+                <a href="recipe.html">Recipe</a>
+                <a href="aboutUs3.html">About Us</a>
+            </div>
+
+            <div class="navbar-extra">
+                <a href="#" id="search"><i data-feather="search"></i></a>
+                <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+            </div>
+
+        </nav>
+    </div>
+
+    <header class="sectionContainer headerContainer" id="kuliner">
+        <div class="headerImg">
+            <img src="balifood1.png" alt="header">
+        </div>
+        <div class="headerContent">
+            <h1>Enjoy the exquisite culinary of <span>Bali</span>.</h1>
+            <p class="sectionDescription">
+                Balinese cuisine is renowned for its bold and flavorful combinations, featuring spicy, savory, and richly spiced dishes, reflecting the diversity of the island's culture and traditions.
+            </p>
+            <div class="headerBtn">
+                <button class="btn" id="jumpButton">Let's Eat</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="sectionContainer buttonContainer" id="special">
+        <button class="buttonCard" id="jumpButtonmain">
+            <h4>Main Course</h4>
+        </button>
+        <button class="buttonCard" id="jumpButtonlight">
+            <h4>Light Bites</h4>
+        </button>
+        <button class="buttonCard" id="jumpButtonrefre">
+            <h4>Refreshments</h4>
+        </button>
+    </section>
+
+    <section class="sectionContainer mainCourseContainer" id="specialMain">
+        <div class="mainCourseHeader">
+            <div class="mainCourseContent">
+                <h2 class="sectionHeader">Main Course</h2>
+                <h5 class="sectionDescription">
+                    From spicy to savory, Balinese cuisine offers a delightful array of main dishes to tantalize your taste buds.
+                </p>
+            </div>
+        </div>
+        <div class="mainCourseGrid">
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Bebek Bakar</h4>
+                    <h5>Kaukau Restaurant</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain1', 'Kaukau Restaurant', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Iga Bakar</h4>
+                    <h5>Padi Restaurant</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain2', 'Padi Restaurant', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Mie Goreng</h4>
+                    <h5>Ely's Kitchen</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain3', 'Ely s Kitchen', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Nasi Kuning</h4>
+                    <h5>Cretya</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain4', 'Cretya Lite', 'Tegallalang')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Sop Buntut</h4>
+                    <h5>Ankhusa Ubud</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain5', 'Ankhusa Ubud', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Sate Maranggi</h4>
+                    <h5>Wayang</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain6', 'Wayang Restaurant', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Bebek Goreng Ubud</h4>
+                    <h5>Kemangi Ubud</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain7', 'Kemangi Restaurant', 'Ubud')">More</button>
+            </div>
+            <div class="mainCourseCard">
+                <div class="textContainer">
+                    <h4>Balinese Royal Kingdom Feast</h4>
+                    <h5>Gabah Resto & Bar</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalMain8', 'Gabah Restaurant & Bar', 'Kuta')">More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sectionContainer lightBitesContainer" id="specialLight">
+        <div class="lightBitesHeader">
+            <div class="lightBitesContent">
+                <h2 class="sectionHeader">Light Bites</h2>
+                <h5 class="sectionDescription">
+                    Bali's light bites offer a delightful explosion of flavors, perfect for a casual and tasty experience.
+                </p>
+            </div>
+        </div>
+        <div class="lightBitesGrid">
+            <div class="lightBitesCard">
+                <div class="textContainer">
+                    <h4>Jaja Godoh</h4>
+                    <h5>Godoh Jaen</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalLight1', 'Godoh Jaen Ne!', 'Denpasar')">More</button>
+            </div>
+            <div class="lightBitesCard">
+                <div class="textContainer">
+                    <h4>Sate Lilit</h4>
+                    <h5>Warung Nasi Ayam Kedewatan Ibu Mangku</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalLight2', 'Warung Nasi Ayam Kedewatan Ibu Mangku', 'Ubud')">More</button>
+            </div>
+            <div class="lightBitesCard">
+                <div class="textContainer">
+                    <h4>Bubur Sumsum</h4>
+                    <h5>JINJO Bali</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalLight3', 'JINJO Bali', 'Ubud')">More</button>
+            </div>
+            <div class="lightBitesCard">
+                <div class="textContainer">
+                    <h4>Pie Susu Bali</h4>
+                    <h5>Pie Susu Asli enaaak</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalLight4', 'Pie Susu Asli Enaaak', 'Kuta')">More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sectionContainer refresmentsContainer" id="specialRefre">
+        <div class="refresmentsHeader">
+            <div class="refresmentsContent">
+                <h2 class="sectionHeader">Refresments</h2>
+                <h5 class="sectionDescription">
+                    Indulge in a tropical escape with Bali's refreshing beverages
+                </p>
+            </div>
+        </div>
+        <div class="refresmentsGrid">
+            <div class="refresmentsCard">
+                <div class="textContainer">
+                    <h4>Es Kuwud</h4>
+                    <h5>Tangi</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalRef1', 'Tangi Restaurant', 'Ubud')">More</button>
+            </div>
+            <div class="refresmentsCard">
+                <div class="textContainer">
+                    <h4>Jamu Glow</h4>
+                    <h5>Nalu Bowls</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalRef2', 'Nalu Bowls', 'Kuta')">More</button>
+            </div>
+            <div class="refresmentsCard">
+                <div class="textContainer">
+                    <h4>Young Coconut</h4>
+                    <h5>Tukies</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalRef3', 'Tukies', 'Ubud')">More</button>
+            </div>
+            <div class="refresmentsCard">
+                <div class="textContainer">
+                    <h4>Cocktail</h4>
+                    <h5>Potato Head</h5>
+                </div>
+                <button class="btn" onclick="openModal('modalRef4', 'Potato Head Beach Club', 'Seminyak')">More</button>
+            </div>
+        </div>
+
+        <div id="modalMain1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain1-title">Kaukau Restaurant</h2>
+                    <p id="modalMain1-description">this is a description</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="slide-1" src="kaukau1.jpg"/>
+                            <img id="slide-2" src="kaukau2.jpg"/>
+                            <img id="slide-3" src="kaukau3.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#slide-1"></a>
+                            <a href="#slide-2"></a>
+                            <a href="#slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.8 (128)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.00-22.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Katik Lantang, Singakerta, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=kaukau restaurant ubud">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain2-title">Padi Restaurant</h2>
+                    <p id="modalMain2-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main2-slide-1" src="padi1.jpg"/>
+                            <img id="main2-slide-2" src="padi2.jpg"/>
+                            <img id="main2-slide-3" src="padi3.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main2-slide-1"></a>
+                            <a href="#main2-slide-2"></a>
+                            <a href="#main2-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>5.0 (7)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.00-23.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Puri Sebali Resort, Jl. Raya Sebali, Kelusa, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=padi restaurant at puri sebali resort">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="modalMain3" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain3-title">Ely's Kitchen</h2>
+                    <p id="modalMain3-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main3-slide-1" src="padi1.jpg"/>
+                            <img id="main3-slide-2" src="padi2.jpg"/>
+                            <img id="main3-slide-3" src="padi3.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main3-slide-1"></a>
+                            <a href="#main3-slide-2"></a>
+                            <a href="#main3-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.7 (742)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.00-23.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Suweta, Bentuyung Sakti, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=ely's kitchen ubud">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain4" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain4-title">Cretya Lite</h2>
+                    <p id="modalMain4-description">Tegallalang</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main4-slide-1" src="cretya1.jpg"/>
+                            <img id="main4-slide-2" src="cretya2.jpg"/>
+                            <img id="main4-slide-3" src="cretya3.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main4-slide-1"></a>
+                            <a href="#main4-slide-2"></a>
+                            <a href="#main4-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.9 (519)</h5>
+                        <p>Opening Hour : Monday-Sunday (08.00-20.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Alamat: Jl. Raya Tegallalang, Tegallalang, Kec. Tegallalang, Kabupaten Gianyar, Bali 80561</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=cretya lite Tegallalang">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain5" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain5-title">Ankhusa Ubud</h2>
+                    <p id="modalMain5-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main5-slide-1" src="ankhusa1.jpg"/>
+                            <img id="main5-slide-2" src="ankhusa2.jpg"/>
+                            <img id="main5-slide-3" src="ankhusa3.jpg"/>
+                            <img id="main5-slide-4" src="ankhusa4.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main5-slide-1"></a>
+                            <a href="#main5-slide-2"></a>
+                            <a href="#main5-slide-3"></a>
+                            <a href="#main5-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.9 (427)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.30-22.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Raya Desa Kenderan No.88X, Kenderan, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=ankhusa ubud by wonderspace">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain6" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain6-title">Wayang Restaurant</h2>
+                    <p id="modalMain6-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main6-slide-1" src="wayang1.jpg"/>
+                            <img id="main6-slide-2" src="wayang2.jpg"/>
+                            <img id="main6-slide-3" src="wayang3.jpg"/>
+                            <img id="main6-slide-4" src="wayang4.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main6-slide-1"></a>
+                            <a href="#main6-slide-2"></a>
+                            <a href="#main6-slide-3"></a>
+                            <a href="#main6-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.7 (174)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.00-23.00)</p>
+                        <p>Price Range  : $$$ - $$$$</p>
+                        <p>Adress       : Jl. Raya Tebongkang Gg. Cendana III, Singakerta, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=wayang restaurant ubut kabupaten gianyar">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain7" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain7-title">Kemangi Resto</h2>
+                    <p id="modalMain7-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main7-slide-1" src="kemangi1.jpg"/>
+                            <img id="main7-slide-2" src="kemangi2.jpg"/>
+                            <img id="main7-slide-3" src="kemangi4.jpg"/>
+                            <img id="main7-slide-4" src="kemangi5.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main7-slide-1"></a>
+                            <a href="#main7-slide-2"></a>
+                            <a href="#main7-slide-3"></a>
+                            <a href="#main7-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.9 (59)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.00-22.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Penestanan Kelod, Sayan, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=kemangi ubud resto">
+                </iframe>
+            </div>
+        </div>
+        
+        <div id="modalMain8" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalMain8-title">Gabah Restaurant & Bar</h2>
+                    <p id="modalMain8-description">Kuta</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="main8-slide-1" src="gabah1.jpg"/>
+                            <img id="main8-slide-2" src="gabah2.jpg"/>
+                            <img id="main8-slide-3" src="gabah3.jpg"/>
+                            <img id="main8-slide-4" src="gabah4.jpg"/>
+                            
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main8-slide-1"></a>
+                            <a href="#main8-slide-2"></a>
+                            <a href="#main8-slide-3"></a>
+                            <a href="#main8-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.3 (929)</h5>
+                        <p>Opening Hour : Monday-Sunday (06.30-23.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jalan Bakung Sari, Kuta, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=gabah restaurant and Bar">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="modalLight1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalLight1-title">Godoh Jaen Ne!</h2>
+                    <p id="modalLight1-description">Denpasar</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="light1-slide-1" src="jajagodoh.jpg"/>
+                            <img id="light1-slide-2" src="jajagodoh2.png"/>
+                            <img id="light1-slide-3" src="jajagodoh3.png"/>
+                            
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#main8-slide-1"></a>
+                            <a href="#main8-slide-2"></a>
+                            <a href="#main8-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.3 (929)</h5>
+                        <p>Opening Hour : Monday-Sunday (06.30-20.00)</p>
+                        <p>Price Range  : $</p>
+                        <p>Adress       : Jl. Intaran No.17, Sanur Kauh, Denpasar Selatan, Kota Denpasar, Bali 80227</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=godoh jaen denpasar selatan">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalLight2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalLight2-title">Warung Nasi Ayam Kedewatan Ibu Mangku</h2>
+                    <p id="modalLight2-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="light2-slide-1" src="satelilit.jpeg"/>
+                            <img id="light2-slide-2" src="satelilit2.png"/>
+                            <img id="light2-slide-3" src="satelilit3.png"/>
+                            <img id="light2-slide-3" src="satelilit4.png"/>
+                            
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#light2-slide-1"></a>
+                            <a href="#light2-slide-2"></a>
+                            <a href="#light2-slide-3"></a>
+                            <a href="#light2-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.6 (5035)</h5>
+                        <p>Opening Hour : Monday-Friday (07.00-21.00)</p>
+                        <p>Price Range  : $ - $$</p>
+                        <p>Adress       : Jl. Raya Kedewatan No.18, Kedewatan, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=warung nasi ayam Kedewatan ibu mangku">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalLight3" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalLight3-title">JINJO Bali</h2>
+                    <p id="modalLight3-description"></p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="light3-slide-1" src="bubursumsum.jpg"/>
+                            <img id="light3-slide-2" src="bubursumsum2.png"/>
+                            <img id="light3-slide-3" src="bubursumsum3.png"/>
+                            <img id="light3-slide-3" src="bubursumsum4.png"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#light3-slide-1"></a>
+                            <a href="#light3-slide-2"></a>
+                            <a href="#light3-slide-3"></a>
+                            <a href="#light3-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.7 (24)</h5>
+                        <p>Opening Hour : Tuesday-Saturday (06.30-20.00)</p>
+                        <p>Price Range  : $</p>
+                        <p>Adress       : Blok A Perumahan Budha Cemeng Ukir, Jl. Imam Bonjol No.21, Pemecutan Klod, Kec. Denpasar Bar., Kota Denpasar, Bali 80112</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=JINJO bali">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalLight4" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalLight4-title">Pie Susu Asli Enaaak</h2>
+                    <p id="modalLight4-description">Kuta</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="light4-slide-1" src="piesusu.jpg"/>
+                            <img id="light4-slide-2" src="piesusu2.png"/>
+                            <img id="light4-slide-3" src="piesusu3.png"/>
+                            
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#light4-slide-1"></a>
+                            <a href="#light4-slide-2"></a>
+                            <a href="#light4-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.3 (929)</h5>
+                        <p>Opening Hour : Monday-Sunday (08.00-20.00)</p>
+                        <p>Price Range  : $ - $$</p>
+                        <p>Adress       : Blok, B Jl. Dewi Sri VIII No.8, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=pie susu asli enaaak denpasar">
+                </iframe>
+            </div>
+        </div>
+
+        <div id="modalRef1" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalRef1-title">Tangi Restaurant</h2>
+                    <p id="modalRef1-description">Ubud</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="ref1-slide-1" src="tangi.jpg"/>
+                            <img id="ref1-slide-2" src="tangi2.jpg"/>
+                            <img id="ref1-slide-3" src="tangi3.jpg"/>
+                            <img id="ref1-slide-4" src="tangi4.jpg"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#ref1-slide-1"></a>
+                            <a href="#ref1-slide-2"></a>
+                            <a href="#ref1-slide-3"></a>
+                            <a href="#ref1-slide-4"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.8 (31)</h5>
+                        <p>Opening Hour : Monday-Sunday (06.30-20.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Cempaka, MAS, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=tangi restaurant gianyar bali">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalRef2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalRef2-title">Nalu Bowls</h2>
+                    <p id="modalRef2-description">Kuta</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="ref2-slide-1" src="bowls.jpg"/>
+                            <img id="ref2-slide-2" src="bowls2.png"/>
+                            <img id="ref2-slide-3" src="bowls3.png"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#ref2-slide-1"></a>
+                            <a href="#ref2-slide-2"></a>
+                            <a href="#ref2-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.4 (1380)</h5>
+                        <p>Opening Hour : Monday-Sunday (07.30-16.00)</p>
+                        <p>Price Range  : $$</p>
+                        <p>Adress       : Jl. Drupadi 1 No.2A, Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=nalu bowls jalan drupadi">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalRef3" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalRef3-title">Tukies</h2>
+                    <p id="modalRef3-description">Ubud/p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="ref3-slide-1" src="coconut.jpg"/>
+                            <img id="ref3-slide-2" src="coconut2.png"/>
+                            <img id="ref3-slide-3" src="coconut3.png"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#ref3-slide-1"></a>
+                            <a href="#ref3-slide-2"></a>
+                            <a href="#ref3-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.7 (1449)</h5>
+                        <p>Opening Hour : Monday-Sunday (06.30-20.00)</p>
+                        <p>Price Range  : $$ - $$$</p>
+                        <p>Adress       : Jl. Monkey Forest No.15, Ubud, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=tangi restaurant gianyar bali">
+                </iframe>
+            </div>
+        </div>
+        <div id="modalRef4" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-text">
+                    <h2 id="modalRef4-title">Potato Head Beach Club</h2>
+                    <p id="modalRef4-description">Seminyak</p>
+                </div>
+                <div class="slide-container">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="ref4-slide-1" src="cocktail.jpg"/>
+                            <img id="ref4-slide-2" src="cocktail2.jpg"/>
+                            <img id="ref4-slide-3" src="cocktail.webp"/>
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#ref4-slide-1"></a>
+                            <a href="#ref4-slide-2"></a>
+                            <a href="#ref4-slide-3"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <div class="content-wrapper">
+                        <h5>4.6 (18540)</h5>
+                        <p>Opening Hour : Monday-Sunday (09.00-00.00)</p>
+                        <p>Price Range  : $$$</p>
+                        <p>Adress       : Jl. Petitenget No.51B, Seminyak, Kec. Kuta Utara, Kabupaten Badung, Bali 80361</p>
+                    </div>
+                </div>
+                <iframe width="100%" height="300" style="border:0" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDgPbuR2HRbjkqiJPykOpJZd8zv8gaUEZ8
+                                &q=Potato Head Beach Club Bali">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="linkedin"></i></a>
+            <a href="#"><i data-feather="mail"></i></a>
+        </div>
+        <div class="link">
+            <a href="index.html">Home</a>
+            <a href="kuliner.html">Culinary</a>
+            <a href="recipe.html">Recipe</a>
+            <a href="aboutUs3.html">About Us</a>
+        </div>
+        <div class="credit">
+            <p>Created by <a href="">Shavelle, Sakura, Tiffany, Frissa</a> . | &copy; 2024.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+
+    <script>
+        feather.replace();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburgerMenu = document.querySelector('#hamburger-menu');
+            const navbarNav = document.querySelector('.navbar-nav');
+
+            hamburgerMenu.onclick = function () {
+                navbarNav.classList.toggle('active');
+            };
+
+            document.addEventListener('click', function (e) {
+                if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target)) {
+                    navbarNav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        const scrollRevealOption = {
+            distance: "50px",
+            origin: "bottom",
+            duration: 1000,
+        };
+
+        ScrollReveal().reveal(".headerImg img", {
+            ...scrollRevealOption,
+            origin: "right",
+        });
+
+        ScrollReveal().reveal(".headerContent h1", {
+            ...scrollRevealOption,
+            delay: "500",
+        });
+
+        ScrollReveal().reveal(".headerContent .sectionDescription", {
+            ...scrollRevealOption,
+            delay: "1000",
+        });
+
+        ScrollReveal().reveal(".headerContent .headerBtn", {
+            ...scrollRevealOption,
+            delay: "1500",
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const jumpButton = document.getElementById('jumpButton');
+            const special = document.getElementById('special');
+
+            jumpButton.addEventListener('click', function () {
+                special.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            const jumpButtonmain = document.getElementById('jumpButtonmain');
+            const specialMain = document.getElementById('specialMain');
+
+            jumpButtonmain.addEventListener('click', function () {
+                specialMain.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            const jumpButtonlight = document.getElementById('jumpButtonlight');
+            const specialLight = document.getElementById('specialLight');
+
+            jumpButtonlight.addEventListener('click', function () {
+                specialLight.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            const jumpButtonrefre = document.getElementById('jumpButtonrefre');
+            const specialRefre = document.getElementById('specialRefre');
+
+            jumpButtonrefre.addEventListener('click', function () {
+                specialRefre.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+    <script>
+        var modals = [
+            'modalMain1', 'modalMain2', 'modalMain3', 'modalMain4', 
+            'modalMain5', 'modalMain6', 'modalMain7', 'modalMain8', 
+            'modalLight1', 'modalLight2', 'modalLight3', 'modalLight4', 
+            'modalRef1', 'modalRef2', 'modalRef3', 'modalRef4'
+        ];
+
+        var spans = document.getElementsByClassName("close");
+
+        function openModal(modalId, title, description) {
+            var modal = document.getElementById(modalId);
+            if (modal) {
+                document.getElementById(modalId + '-title').textContent = title;
+                document.getElementById(modalId + '-description').textContent = description;
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Penanganan tombol close
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].onclick = function () {
+                modals.forEach(function(modalId) {
+                    var modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "none";
+                    }
+                });
+                document.body.style.overflow = 'auto';
+            };
+        }
+
+        // Penanganan klik di luar modal
+        window.onclick = function (event) {
+            modals.forEach(function(modalId) {
+                var modal = document.getElementById(modalId);
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        };
+    </script>
+</body>
+</html>
